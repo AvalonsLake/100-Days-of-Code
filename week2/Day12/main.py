@@ -9,11 +9,15 @@ def reset_game():
     start_game()
 
 def play_again():
-    will_play = input("Would you like to play again? Y/N ").lower()
-    if will_play == "yes":
-        reset_game()
-    else:
-        return
+    decision = False
+    while not decision:
+        will_play = input("Would you like to play again? Y/N ").lower()
+        if will_play == "y":
+            reset_game()
+        elif will_play == "n":
+            return
+        else:
+            print("Please enter 'Y' or 'N'")
 
 def start_game():
     global guesses, game_over
@@ -33,7 +37,7 @@ def start_game():
     while not game_over:
         print(f"You have {guesses} guesses left!")
         if guesses == 0:
-            print("you lose!")
+            print(f"you lose! The number was {number}")
             play_again()
         player_guess = int(input("Guess a number: "))
         if player_guess == number:
