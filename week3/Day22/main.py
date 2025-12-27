@@ -18,6 +18,7 @@ screen.tracer(0)
 
 r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350, 0))
+# l_paddle.shapesize(stretch_wid=50, stretch_len=1)
 ball = Ball()
 
 screen.listen()

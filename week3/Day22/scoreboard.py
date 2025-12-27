@@ -37,5 +37,5 @@ class Scoreboard(Turtle):
             self.hideturtle()
             self.goto(0, 0)
             self.write("Player 2 Wins!\n "
-                       f"{self.score_p1} | {self.score_p2}", False, align=placement, font=font)
+                       f"      {self.score_p1} | {self.score_p2}", False, align=placement, font=font)
             return True
