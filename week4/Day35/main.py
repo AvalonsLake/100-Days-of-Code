@@ -1,5 +1,6 @@
+from os import environ
+
 import requests
-import os
 from twilio.rest import Client
 
 account_sid = "ACd0305e3096e18d67a3dcf4e155524c42"
