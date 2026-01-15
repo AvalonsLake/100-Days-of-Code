@@ -39,33 +39,45 @@ graph_config = {
 # response = requests.post(url=graph_endpoint, json=graph_config, headers=headers)
 # print(response.text)
 
+# ---------- Update Pixel ---------- #
+def update_pixel():
+    date = input("What date would you like to update? [YYYYMMDD] ").lower()
+    amount = input("How many sketches did you do that day? ")
+    update_pixel_ep = f"{pixel_endpoint}/{date}"
+
+    update_pixel = {
+        "quantity": amount
+    }
+
+    response = requests.put(url=update_pixel_ep, json=update_pixel, headers=headers)
+    print(response.text)
+
+# ---------- Delete Pixel ---------- #
+def delete_pixel():
+    date = input("What date do you want to delete? [YYYYMMDD] ").lower()
+    del_pix_endpoint = f"{pixel_endpoint}/{date}"
+
+    response = requests.delete(url=del_pix_endpoint, headers=headers)
+    print(response.text)
+
 # ---------- Create Pixel ---------- #
 
 pixel_endpoint = f"{graph_endpoint}/{graph_id}"
+run = True
+while run:
+    amount = input("How many sketches did you do today? ")
+    if amount == "update":
+        update_pixel()
+    elif amount == "delete":
+        delete_pixel()
+    elif amount == "exit":
+        run = False
+    else:
+        graph_pixel = {
+            "date": today.strftime("%Y%m%d"),
+            # "date": "20260115",
+            "quantity": amount
+        }
 
-graph_pixel = {
-    "date": today.strftime("%Y-%m-%d"),
-    # "date": "20260115",
-    "quantity": "12"
-}
-
-# response = requests.post(url=pixel_endpoint, json=graph_pixel, headers=headers)
-# print(response.text)
-
-# ---------- Update Pixel ---------- #
-
-update_pixel_ep = f"{pixel_endpoint}/20250115"
-
-update_pixel = {
-    "quantity": "3"
-}
-
-# response = requests.put(url=update_pixel_ep, json=update_pixel, headers=headers)
-# print(response.text)
-
-# ---------- Delete Pixel ---------- #
-
-del_pix_endpoint = f"{pixel_endpoint}/20260115"
-
-response = requests.delete(url=del_pix_endpoint, headers=headers)
-print(response.text)
+        response = requests.post(url=pixel_endpoint, json=graph_pixel, headers=headers)
+        print(response.text)
