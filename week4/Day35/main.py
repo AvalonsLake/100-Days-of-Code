@@ -1,5 +1,3 @@
-from os import environ
-
 import requests
 from twilio.rest import Client
 
@@ -29,7 +27,7 @@ if will_rain:
     message = client.messages \
         .create(
         body="It's going to rain today. Remember to bring an ☔️",
-        from_="YOUR TWILIO VIRTUAL NUMBER",
-        to="YOUR TWILIO VERIFIED REAL NUMBER"
+        from_="+18664777649",
+        to="+18019718818"
     )
     print(message.status)
