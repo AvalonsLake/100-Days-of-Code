@@ -1,8 +1,8 @@
 import requests
 from twilio.rest import Client
 
-account_sid = "ACd0305e3096e18d67a3dcf4e155524c42"
-auth_token = "a52ac2ec87239463434cf35003595924"
+account_sid = "AC38d362c73825e086cd48be8a41cc624e"
+auth_token = "62c8991e5ffc40fd8dc1f049a49ad762"
 
 api_key = "2d6a22383efb2986fd31aa8c9d593bb2"
 parameters = {
@@ -17,17 +17,16 @@ response.raise_for_status()
 weather_data = response.json()
 
 
-will_rain = False
+will_rain = True
 for hour_data in weather_data["list"]:
     condition_code = hour_data["weather"][0]["id"]
     if int(condition_code) < 700:
         will_rain = True
 if will_rain:
     client = Client(account_sid, auth_token)
-    message = client.messages \
-        .create(
+    message = client.messages.create(
         body="It's going to rain today. Remember to bring an ☔️",
-        from_="+18664777649",
+        from_="+15163631765",
         to="+18019718818"
     )
     print(message.status)
