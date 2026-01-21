@@ -46,4 +46,4 @@ class DataManager:
     def get_user_data(self):
         response = requests.get(url=SHEETY_USERS_ENDPOINT)
         data = response.json()
-        print(data)
+        return data
