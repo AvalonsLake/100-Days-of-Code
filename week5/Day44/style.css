@@ -1,3 +1,5 @@
+
+
 body {
     text-align: Center;
     background-color: black;
@@ -5,8 +7,8 @@ body {
 
 h1 {
     color: white;
-    /* font-family: ; */
-    font-size: 53px;
+    font-family: "Libre Baskerville", serif;
+    font-size: 43px;
     text-transform: uppercase;
 }
 
