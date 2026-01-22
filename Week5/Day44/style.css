@@ -1,0 +1,25 @@
+body {
+    text-align: Center;
+    background-color: black;
+}
+
+h1 {
+    color: white;
+    /* font-family: ; */
+    font-size: 53px;
+    text-transform: uppercase;
+}
+
+p {
+    color: white;
+    font-size: 25px;
+}
+
+img {
+    border: 5px solid white;
+}
+
+.poster {
+    height: 500px;
+    margin-top: 8%;
+}
