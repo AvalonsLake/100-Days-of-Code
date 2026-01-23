@@ -5,9 +5,19 @@ URL = "https://web.archive.org/web/20200518073855/https://www.empireonline.com/m
 
 # Write your code below this line 👇
 
-with open("website.html") as file:
-    contents = file.read()
+# ========== Scraping the data ========== #
+response = requests.get(URL)
+website_html = response.text
 
-soup = BeautifulSoup(contents, "html.parser")
-print(soup.title)
-print(soup.title.string)
+soup = BeautifulSoup(website_html, "html.parser")
+movie_titles = soup.find_all("h3", class_="title")
+
+movie_list = [movies.text for movies in movie_titles[::-1]]
+
+print(movie_list)
+
+
+# =========== Writing the list to a txt file ========== #
+with open("best_movies.txt", "w") as file:
+    for movie in movie_list:
+        file.write(movie + "\n")
