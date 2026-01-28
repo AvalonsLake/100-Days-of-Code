@@ -18,6 +18,6 @@ print(movie_list)
 
 
 # =========== Writing the list to a txt file ========== #
-with open("best_movies.txt", "w") as file:
+with open("best_movies.txt", "w", encoding="utf-8") as file:
     for movie in movie_list:
         file.write(movie + "\n")
